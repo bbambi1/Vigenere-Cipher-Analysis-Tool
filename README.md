@@ -18,13 +18,13 @@ Aucune bibliothèque n'a besoin d'être préalablement installée.
 
 En pratique, si les fichiers se trouvent dans le répertoire "*user*", on écrirait (notez les arguments et leur ordre) :
 ```
-C:\Users\user>python Vigenere_Bienvenu.py -e texte.txt
+C:\Users\user>python Vigenere_Bienvenu.py -e texte.english
 ```
-si on souhaite **encoder** le fichier *texte.txt* 
+si on souhaite **encoder** le fichier *texte.english* 
 ```
-C:\Users\user>python Vigenere_Bienvenu.py -d texte.txt
+C:\Users\user>python Vigenere_Bienvenu.py -d texte.encoded
 ```
-si on souhaite **décoder** le fichier *texte.txt*
+si on souhaite **décoder** le fichier *texte.encoded*
 
 Il ne restera plus qu'à suivre les instructions qui vont dérouler dans le terminal. 
 

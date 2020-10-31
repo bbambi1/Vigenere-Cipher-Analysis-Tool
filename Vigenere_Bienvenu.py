@@ -1,6 +1,7 @@
 # --------------------------------------- TP Cryptographie --------------------------------------------------
 
 import sys
+import os
 
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -265,7 +266,13 @@ def encode_vigenere(string):
         print("La cle rentree n'est pas valide.\nN'utilisez que des lettres en majuscule")
         cle = input("Entrez la cle :\n")
     message_code = code_vigenere(texte, cle)
+    # On enregistre le fichier cree dans le meme repertoire
+    filename = os.path.splitext(string)[0]
+    f = open(filename+".encoded", 'w')
+    f.writelines(message_code)
+    f.close()
     print("Le texte chiffré correspondant est : \n", message_code, sep="")
+    print("\nLe texte chiffré a été enregistré dans le même répertoire")
     return
 
 
@@ -299,9 +306,15 @@ def decode_vigenere(string):
     cle_trouvee = DecouverteCle(message, LongueurProbable)
     # On retrouve le texte en clair
     message_decode = decode_vigenere_withKey(message, cle_trouvee)
+    # On enregistre le fichier cree dans le meme repertoire
+    filename = os.path.splitext(string)[0]
+    f = open(filename + ".english", 'w')
+    f.writelines(message_decode)
+    f.close()
     print("La longueur probable de la cle est : ", LongueurProbable)
     print("La cle probable est : ", cle_trouvee)
     print("Le texte en clair est : \n", message_decode, sep="")
+    print("\nLe texte en clair a été enregistré dans le même répertoire")
     return
 
 
