@@ -1,53 +1,74 @@
-# Chiffre de Vigenere
+# Vigenere Cipher Analysis Tool
 
-Un script Python qui retrouve la clé de chiffrement et le texte en clair à partir du texte chiffré en effectuant une analyse des indices de coïncidence.
+Vigenere Cipher Tool is a Python-based utility that allows users to encrypt, decrypt, and analyze text using the Vigenere cipher method.
 
+## Table of Contents
+- [Vigenere Cipher Analysis Tool](#vigenere-cipher-analysis-tool)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Testing](#testing)
+  - [Contributing](#contributing)
+  - [License](#license)
 
+## Features
 
-## Installations et Usage
+1. **Encryption**: Encrypt plaintext with a user-provided key using the Vigenere cipher method.
+2. **Decryption**: Decrypt ciphertext using a known key.
+3. **Analysis Tools**:
+    - **Kasiski Examination**: Deduce potential key lengths based on repeated sequences in the ciphertext.
+    - **Index of Coincidence (IoC)**: Utilize statistical properties to suggest potential key lengths.
+    - **Key Deduction**: Attempt to deduce the key using frequency analysis based on potential key lengths.
 
-### Installations
+## Installation
 
-Aucune bibliothèque n'a besoin d'être préalablement installée.
+1. Clone the repository:
+    ```
+    git clone https://github.com/bbienvenu/Vigenere-Cipher-Analysis-Tool.git
+    ```
+2. Change directory:
+    ```
+    cd vigenere-cipher-tool
+    ```
+3. (Optional) Create a virtual environment:
+    ```
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
-### Usage
+## Usage
 
-1. Le fichier Python ("Vigenere_Bienvenu.py") doit se trouver dans le même répertoire (dossier) que le texte à coder/décoder. 
-2. Ouvrez le terminal (cmd sous Windows) et utilisez "cd" pour pointer dans le répertoire où se trouvent les fichiers texte à encoder/décoder et le script Python.
-3. Utilisez le drapeau "**-e**" pour encoder le fichier et "**-d**" pour décoder. 
+1. Execute the main script:
+    ```
+    python main.py
+    ```
 
-En pratique, si les fichiers se trouvent dans le répertoire "*user*", on écrirait (notez les arguments et leur ordre) :
-```
-C:\Users\user>python Vigenere_Bienvenu.py -e texte.english
-```
-si on souhaite **encoder** le fichier *texte.english* 
-```
-C:\Users\user>python Vigenere_Bienvenu.py -d texte.encoded
-```
-si on souhaite **décoder** le fichier *texte.encoded*
+2. Follow the interactive CLI instructions. Choose between `encrypt`, `decrypt`, or `analyze` actions, and provide the necessary input.
 
-Il ne restera plus qu'à suivre les instructions qui vont dérouler dans le terminal. 
+## Testing
 
+To ensure the Vigenere Cipher tool's functionality, tests have been provided:
 
+1. Run the test suite:
+    ```
+    python -m unittest -v
+    ```
 
-## Retrouver la clé de chiffrement
+2. Ensure all tests pass to validate that the core functionality of the Vigenere cipher is working correctly.
 
-Ce programme utilise une méthode en deux parties pour déterminer la clé de chiffrement. La première partie utilise la répétition de séquences identiques pour trouver la longueur de la clé, et la seconde partie utilise une analyse de fréquence pour trouver la clé réelle.
+## Contributing
 
+Contributions are welcome! Here's how you can help:
 
+1. **Fork** the repository on GitHub.
+2. **Clone** your fork and create a new branch: 
+    ```
+    git checkout -b your-branch-name
+    ```
+3. Make your changes, and then push them back to your repository.
+4. Submit a **pull request** detailing your changes.
 
-### 1. Longueur de la clé :
+## License
 
-La première étape consiste à trouver chaque séquence d'au moins 3 lettres qui se répètent dans le texte crypté. Ces séquences pourraient indiquer qu'il s'agit des mêmes lettres du texte en clair chiffrées avec les mêmes sous-parties de la clé.
-
-Après avoir trouvé les séquences répétées, il suffit de relever la "distance" (le nombre de caractères d'écart) entre chaque séquence.
-
-Enfin, pour chaque longueur de clé possible, on s'intéresse à celle qui divise le plus de "distances répétées".
-
-
-
-### 2. Découverte de la clé
-
-Une fois la longueur de la clé déterminée, on peut retrouver la clé en utilisant les IC. 
-Premièrement, on retrouve les décalages d_i pour lesquels les sous-textes T_1  ,…,T_(n-1)  concaténés chacun avec T_0 forment un texte qui coïncide avec l’anglais.
-Il ne reste plus maintenant qu’a fixer l’origine. Pour cela on concatène tous les textes T_i chacun avec son décalage d_i et on cherche la lettre la plus fréquente qui va correspondre alors à "E" ; ce qui nous permet de fixer le décalage global d_g.
+Vigenere Cipher Tool is open source and available under the MIT License. See `LICENSE` file for more details.
